@@ -17,16 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Archive | Hexo</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://zyx7017.github.io/archives/index.html">
+  <title>vue中axios使用post请求参数无法获取问题 | Hexo</title>
+  <meta name="description" content="使用vue通过axios使用post请求，但是发现后台一直没有接收到参数，使用params 通过get方式一切正常 通过查询资料发现是格式问题 引入 qs ，这个库是 axios 里面包含的，不需要再下载了。 import Qs from ‘qs’ let data &#x3D; {    “username”: “admin”,    “pwd”: “admin”} axios({    headers:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue中axios使用post请求参数无法获取问题">
+<meta property="og:url" content="https://zyx7017.github.io/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用vue通过axios使用post请求，但是发现后台一直没有接收到参数，使用params 通过get方式一切正常 通过查询资料发现是格式问题 引入 qs ，这个库是 axios 里面包含的，不需要再下载了。 import Qs from ‘qs’ let data &#x3D; {    “username”: “admin”,    “pwd”: “admin”} axios({    headers:">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-05T05:08:46.000Z">
+<meta property="article:modified_time" content="2020-11-05T05:13:19.613Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zyx7017.github.io/archives/index.html">
+  <link rel="canonical" href="https://zyx7017.github.io/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -310,98 +314,183 @@
   
   
 <main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">Archive</h1>
-	      <p class="text-muted">Total 6 articles</p>
-	    </header>
-	    <div class="article-body">
-	      
+  <div class="content">
+  <article id="post-vue中axios使用post请求参数无法获取问题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
   
+    <h1 class="article-title" itemprop="name">
+      vue中axios使用post请求参数无法获取问题
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/" class="article-date">
+	  <time datetime="2020-11-05T05:08:46.000Z" itemprop="datePublished">2020-11-05</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>使用vue通过axios使用post请求，但是发现后台一直没有接收到参数，<br>使用params 通过get方式一切正常</p>
+<p>通过查询资料发现是格式问题</p>
+<p>引入 qs ，这个库是 axios 里面包含的，不需要再下载了。</p>
+<p>import Qs from ‘qs’</p>
+<p>let data = {<br>    “username”: “admin”,<br>    “pwd”: “admin”<br>}</p>
+<p>axios({<br>    headers: {<br>        ‘deviceCode’: ‘A95ZEF1-47B5-AC90BF3’<br>    },<br>    method: ‘post’,<br>    url: ‘/api/lockServer/search’,<br>    data: Qs.stringify(data)<br>})</p>
+<p>来源：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/csdn_yudong/article/details/79668655?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare">https://blog.csdn.net/csdn_yudong/article/details/79668655?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+<!-- 
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a  href="https://zyx7017.github.io/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/" title="vue中axios使用post请求参数无法获取问题" target="_blank" rel="external"> https://zyx7017.github.io/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/</a>
+    </li>
+    
+-->
+
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+<!-- 
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zyx7017" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zyx7017" target="_blank"><span class="text-dark">于生</span><small class="ml-1x">Code Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+-->
+    </div>
+  </article>
   
     
+  <section id="comments">
+  	
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
     
-      
-      
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2020" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2020
-            </a>
-            <!-- <a href="/archives/2020" class="archive-year">2020</a> -->
-          </h3>
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/" title="粗俗理解JWT"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/" title="go解决goget无法下载问题，并处理GO111MODULE后续问题"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div id="collapse2020" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2020">
-        <div class="panel-body">
-          <div class="collection">
-    
-    
-<a href="/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-11-10T01:17:26.000Z" itemprop="datePublished">2020-11-10</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 粗俗理解JWT
-</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  
-    
-    
-    
-<a href="/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-11-05T05:08:46.000Z" itemprop="datePublished">2020-11-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> vue中axios使用post请求参数无法获取问题
-</a>
 
-
-  
-    
-    
-    
-<a href="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-11-02T04:20:19.000Z" itemprop="datePublished">2020-11-02</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> go解决goget无法下载问题，并处理GO111MODULE后续问题
-</a>
-
-
-  
-    
-    
-    
-<a href="/2020/11/02/go%E4%BD%BF%E7%94%A8mysql%E5%A4%B1%E8%B4%A5/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-11-02T01:29:52.776Z" itemprop="datePublished">2020-11-02</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> go使用mysql失败
-</a>
-
-
-  
-    
-    
-    
-<a href="/2020/10/30/%E7%94%A8hexo%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BA%E6%88%91%E7%9A%84GitHub%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-10-30T12:34:08.000Z" itemprop="datePublished">2020-10-30</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 用hexo从零开始创建我的免费GitHub博客
-</a>
-
-
-  
-    
-    
-    
-<a href="/2020/10/30/hello-world/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-10-30T06:37:02.505Z" itemprop="datePublished">2020-10-30</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Hello World
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
-  	 	
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -463,6 +552,29 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 </script>
 
 
+
+
+   
+
+
+
+
+   
+    
+    <script defer>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://zyx7017.github.io/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/';
+        
+        this.page.identifier = 'vue中axios使用post请求参数无法获取问题';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
 
 

@@ -17,26 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>go解决goget无法下载问题，并处理GO111MODULE后续问题 | Hexo</title>
-  <meta name="description" content="发现问题的原因想使用gin可是使用 go get -u github.com&#x2F;gin-gonic&#x2F;gin 无法下载 可以使用如下命令export GO111MODULE&#x3D;onexport GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.io 关闭终端后则会失效，也可以自行配置成全局成功安装~~ 成功是成功了可是后续问题也来了，因为我们将 GO111MODULE 开启为 on,导致gopath和ve">
+  <title>粗俗理解JWT | Hexo</title>
+  <meta name="description" content="好了我们来点通俗易懂的吧 1,jwt可以做什么 jwt可以代替session判断用户是否登录 2,什么是jwt 简而言之，jwt就是在用户登录的时候，将一串数据加密成一串你看不懂的数据比如说    1234567CustomClaims&amp;#123;        UserId: 112222,&#x2F;&#x2F;用户id        StandardClaims: jwt.StandardC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go解决goget无法下载问题，并处理GO111MODULE后续问题">
-<meta property="og:url" content="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="粗俗理解JWT">
+<meta property="og:url" content="https://zyx7017.github.io/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="发现问题的原因想使用gin可是使用 go get -u github.com&#x2F;gin-gonic&#x2F;gin 无法下载 可以使用如下命令export GO111MODULE&#x3D;onexport GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.io 关闭终端后则会失效，也可以自行配置成全局成功安装~~ 成功是成功了可是后续问题也来了，因为我们将 GO111MODULE 开启为 on,导致gopath和ve">
+<meta property="og:description" content="好了我们来点通俗易懂的吧 1,jwt可以做什么 jwt可以代替session判断用户是否登录 2,什么是jwt 简而言之，jwt就是在用户登录的时候，将一串数据加密成一串你看不懂的数据比如说    1234567CustomClaims&amp;#123;        UserId: 112222,&#x2F;&#x2F;用户id        StandardClaims: jwt.StandardC">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_10.png">
-<meta property="og:image" content="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_17.png">
-<meta property="og:image" content="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_21.png">
-<meta property="og:image" content="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_26.png">
-<meta property="og:image" content="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_22.png">
-<meta property="article:published_time" content="2020-11-02T04:20:19.000Z">
-<meta property="article:modified_time" content="2020-11-02T10:41:07.566Z">
+<meta property="article:published_time" content="2020-11-10T01:17:26.000Z">
+<meta property="article:modified_time" content="2020-11-10T01:35:09.827Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_10.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/index.html">
+  <link rel="canonical" href="https://zyx7017.github.io/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -321,14 +315,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-go解决goget无法下载问题，并处理GO111MODULE后续问题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-粗俗理解JWT" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      go解决goget无法下载问题，并处理GO111MODULE后续问题
+      粗俗理解JWT
     </h1>
   
 
@@ -336,33 +330,31 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/" class="article-date">
-	  <time datetime="2020-11-02T04:20:19.000Z" itemprop="datePublished">2020-11-02</time>
+	<a href="/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/" class="article-date">
+	  <time datetime="2020-11-10T01:17:26.000Z" itemprop="datePublished">2020-11-10</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/go/">go</a>
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>
   </span>
 
         
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>发现问题的原因想使用gin<br>可是使用 go get -u github.com/gin-gonic/gin 无法下载</p>
-<p>可以使用如下命令<br>export GO111MODULE=on<br>export GOPROXY=<a target="_blank" rel="noopener" href="https://goproxy.io/">https://goproxy.io</a></p>
-<p>关闭终端后则会失效，也可以自行配置成全局<br>成功安装~~</p>
-<p>成功是成功了可是后续问题也来了，因为我们将 GO111MODULE 开启为 on,导致gopath和vender失效，无法引入自己创建在文件夹下的包</p>
-<p><img src="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_10.png"></p>
-<p>执行命令,发现发生错误，不要慌，咱们继续<br><img src="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_17.png"></p>
-<p>使用go mod init package  //go mod init固定搭配 package则是你取得名字，会生成go.mod存放当前目录<br><img src="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_21.png"><br>修改包引入你自己设置的名字package<br><img src="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_26.png"><br>成功解决<br><img src="/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/Snip20201102_22.png"></p>
+        <p>好了我们来点通俗易懂的吧</p>
+<p>1,jwt可以做什么</p>
+<p>jwt可以代替session判断用户是否登录</p>
+<p>2,什么是jwt</p>
+<p>简而言之，jwt就是在用户登录的时候，将一串数据加密成一串你看不懂的数据<br>比如说<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CustomClaims&#123;</span><br><span class="line">        UserId: 112222,&#x2F;&#x2F;用户id</span><br><span class="line">        StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">            ExpiresAt: time.Now().Add(time.Duration(maxAge)*time.Second).Unix(), &#x2F;&#x2F; 过期时间，必须设置</span><br><span class="line">            Issuer:&quot;jerry&quot;,   &#x2F;&#x2F; 非必须，也可以填充用户名，</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>    变成<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjExMjIyMiwiZXhwIjoxNjA3NTYxOTU2LCJpc3MiOiJqZXJyeSJ9.p0y_RU9HxUY4wSCWkpDlwhLlwvfOSnq36lEPqms3i_c</span><br></pre></td></tr></table></figure><br>    然后每次用户想要访问需要登录才能访问的链接，则将<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjExMjIyMiwiZXhwIjoxNjA3NTYxOTU2LCJpc3MiOiJqZXJyeSJ9.p0y_RU9HxUY4wSCWkpDlwhLlwvfOSnq36lEPqms3i_c</span><br></pre></td></tr></table></figure><br>    再次解析成,这样就可以获取用户id和一些其他的信息，用于判断用户登录<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CustomClaims&#123;</span><br><span class="line">    UserId: 112222,&#x2F;&#x2F;用户id</span><br><span class="line">    StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">        ExpiresAt: time.Now().Add(time.Duration(maxAge)*time.Second).Unix(), &#x2F;&#x2F; 过期时间，必须设置</span><br><span class="line">        Issuer:&quot;jerry&quot;,   &#x2F;&#x2F; 非必须，也可以填充用户名，</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>    3，如何手动过期jwt呢<br>    因为可以设置jwt过期时间<br>    那用户更改密码之后jwt还没过期怎么办，比如有两台设备，一台已经更改了密码，jwt也更新了，但是另外一台用旧的jwt还是能够继续访问。<br>    那就设置版本号或者添加一组jwt黑名单<br>    个人觉得版本号比较好<br>    什么是版本号，就是在UserId后面在添加一个数据，version<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CustomClaims&#123;</span><br><span class="line">        UserId: 112222,&#x2F;&#x2F;用户id</span><br><span class="line">        Version: v1.0,</span><br><span class="line">        StandardClaims: jwt.StandardClaims&#123;</span><br><span class="line">            ExpiresAt: time.Now().Add(time.Duration(maxAge)*time.Second).Unix(), &#x2F;&#x2F; 过期时间，必须设置</span><br><span class="line">            Issuer:&quot;jerry&quot;,   &#x2F;&#x2F; 非必须，也可以填充用户名，</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>每次判断的时候可以从redis或者数据库检查是否为当前最新的jwt，如果是最新的则继续访问，不是则清空本地jwt提示重新登录<br>不知道我说的对不对：有什么意见可以直接发送邮箱<a href="mailto:&#50;&#x34;&#52;&#57;&#x30;&#50;&#56;&#x39;&#x30;&#54;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#50;&#x34;&#52;&#57;&#x30;&#50;&#56;&#x39;&#x30;&#54;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a></p>
 
       
     </div>
@@ -373,7 +365,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a  href="https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/" title="go解决goget无法下载问题，并处理GO111MODULE后续问题" target="_blank" rel="external"> https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/</a>
+      <a  href="https://zyx7017.github.io/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/" title="粗俗理解JWT" target="_blank" rel="external"> https://zyx7017.github.io/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/</a>
     </li>
     
 -->
@@ -425,13 +417,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/" title="vue中axios使用post请求参数无法获取问题"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/11/02/go%E4%BD%BF%E7%94%A8mysql%E5%A4%B1%E8%B4%A5/" title="go使用mysql失败"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/11/05/vue%E4%B8%ADaxios%E4%BD%BF%E7%94%A8post%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%97%AE%E9%A2%98/" title="vue中axios使用post请求参数无法获取问题"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -570,9 +558,9 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     <script defer>
     var disqus_config = function () {
         
-            this.page.url = 'https://zyx7017.github.io/2020/11/02/go%E8%A7%A3%E5%86%B3goget%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E5%B9%B6%E5%A4%84%E7%90%86GO111MODULE%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98/';
+            this.page.url = 'https://zyx7017.github.io/2020/11/10/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3JWT/';
         
-        this.page.identifier = 'go解决goget无法下载问题，并处理GO111MODULE后续问题';
+        this.page.identifier = '粗俗理解JWT';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
